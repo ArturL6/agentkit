@@ -25,15 +25,9 @@ This document separates two things that must not be confused:
 
 The target state is direction, not a promise that all of it belongs in v1. Passing a simple demonstration does not prove deterministic reversibility, general event replay, hot replacement, or full agent-loop interchangeability.
 
-The decision hierarchy is:
+The historical decision hierarchy below is superseded by the repository-wide authority order in `AGENTS.md`. It remains here only to explain the original baseline. Current work must start from the consolidated ADRs under `docs/adr/` and the v1 product backlog.
 
-1. accepted ADRs;
-2. this document;
-3. an owner-approved roadmap or work packet;
-4. the assigned issue/task;
-5. implementation choices.
-
-When these disagree, stop and resolve the higher-level contradiction. Structural changes require an ADR. No implementation work is authorized merely because it appears in this document.
+When current governing artifacts disagree, stop and resolve the higher-level contradiction. Structural changes require an ADR. No implementation work is authorized merely because it appears in this historical document.
 
 ## 2. Architectural thesis
 
@@ -563,20 +557,22 @@ A proposal to enter a later stage must include:
 
 Absent this evidence, keep explicit composition and the smaller contract.
 
-## 20. Durable invariants
+## 20. Historical durable invariants (non-binding)
+
+The following list records the superseded minimal-first baseline. It is not a current release gate. The decision-by-decision map in `adr/README.md` identifies what survives; `AGENTS.md`, the consolidated ADRs, and the v1 product backlog govern current work.
 
 1. Public AgentKit contracts are framework-neutral.
 2. Adapters depend inward; contracts do not depend outward.
-3. `RuntimeSpec` is typed, programmatic-first, and loader-neutral.
-4. Composition is explicit until evidence earns a registry.
-5. Every AgentKit-managed tool call crosses kernel-owned `ToolInvoker`.
-6. Public streams are closed, bounded, and framework-neutral.
-7. Cancellation is cooperative, propagated, and tested; each run has one terminal outcome.
-8. Runtime-owned resources have recorded cleanup and bounded shutdown, without a reversibility claim.
-9. v1 sessions are product-shaped records, not general event sourcing.
-10. LangGraph owns only adapter-internal orchestration and checkpoints.
-11. One wheel is the default until ecosystem evidence earns more.
-12. Clean-wheel execution is required evidence.
-13. Plugin machinery and richer composition enter only through explicit gates.
-14. Structural change requires an ADR.
-15. Implementation dispatch requires separate owner authorization.
+3. `RuntimeSpec` was typed, programmatic-first, and loader-neutral.
+4. Composition was explicit until evidence earned a registry.
+5. Every AgentKit-managed tool call crossed kernel-owned `ToolInvoker`.
+6. Public streams were closed, bounded, and framework-neutral.
+7. Cancellation was cooperative, propagated, and tested; each run had one terminal outcome.
+8. Runtime-owned resources had recorded cleanup and bounded shutdown, without a reversibility claim.
+9. v1 sessions were product-shaped records, not general event sourcing.
+10. LangGraph owned only adapter-internal orchestration and checkpoints.
+11. One wheel was the default until ecosystem evidence earned more.
+12. Clean-wheel execution was required evidence.
+13. Plugin machinery and richer composition entered only through explicit gates.
+14. Structural change required an ADR.
+15. Implementation dispatch required separate owner authorization.

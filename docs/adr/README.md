@@ -46,6 +46,12 @@ This set decomposes the larger framework-strategy ADR into focused decisions.
                  Durable Execution
 ```
 
+## Decision status
+
+- **ADR-001 is Proposed.** LangGraph, Google ADK, and MAF are approved as concrete v1 comparison and integration targets, but no default production execution path is selected until the AK-001 through AK-009 spike produces evidence and ADR-001 is finalized.
+- **ADR-002 through ADR-009 are Accepted.**
+- The v1 backlog describes authorized target work and dependency order; it does not convert ADR-001's proposed framework selection into an accepted decision.
+
 All dynamic model-visible context goes through the Context Builder rather than arbitrary prompt mutation.
 
-Agentkit supports concrete execution adapters for LangGraph, Google ADK, and MAF while deliberately avoiding a universal lowest-common-denominator runtime abstraction. Hosting integrations remain separate from execution adapters.
+Agentkit targets concrete execution adapters for LangGraph, Google ADK, and MAF while deliberately avoiding a universal lowest-common-denominator runtime abstraction. Hosting integrations remain separate from execution adapters.
