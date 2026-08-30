@@ -1,77 +1,46 @@
 ## Outcome
 
-<!-- What owner-authorized outcome does this PR deliver? -->
+<!-- What useful, owner-authorized outcome does this PR deliver? -->
 
-## Scope and authorization
+## Scope
 
-- Task/issue/work packet:
-- Owner implementation authorization:
+- Backlog ticket or owner request:
 - Explicitly out of scope:
 
-## Architecture and decisions
+## Architecture
 
-- Relevant `ARCHITECTURE.md` sections:
-- Relevant ADRs:
-- New or updated ADR (if structural semantics changed):
-- Target-state machinery added? If yes, identify the evidence gate and proof:
+- Relevant consolidated ADRs under `docs/adr/`:
+- Relevant AK tickets in `docs/architecture/agentkit-v1-product-backlog.md`:
+- Agentkit-owned abstraction introduced or changed, and why a framework-native seam is insufficient:
+- Framework-specific behavior or capability gap that remains visible:
+
+> `ARCHITECTURE.md`, `ROADMAP.md`, `adr/`, and `governance/kanban-backlog.json` are historical provenance only and must not be cited as current requirements.
 
 ## Changes
 
-<!-- Concise list of concrete code/document/test changes. -->
-
-## Public API and dependency impact
-
-- Public exports/contracts changed:
-- `RuntimeSpec` or configuration changed:
-- Framework/provider imports and containment:
-- Packaging/dependency changes:
-
-## Tool invocation and security
-
-- Can this change execute tools? If yes, show that every path crosses kernel-owned `ToolInvoker`:
-- Authorization/approval/audit ordering impact:
-- Principal, secret, redaction, or artifact handling impact:
-- New trust boundary or fail-open/fail-closed behavior:
-
-## Lifecycle, concurrency, streaming, and cancellation
-
-- Resources/tasks created and their owner:
-- Acquisition-failure unwind:
-- Shutdown bound and cleanup behavior:
-- Stream bounds/backpressure/abandonment behavior:
-- Cancellation propagation and single terminal-outcome proof:
-
-<!-- Do not describe resource cleanup as deterministic reversibility unless that stronger claim is actually proven. -->
-
-## Sessions and framework checkpoints
-
-- Session records/schema changed:
-- Retention/privacy/migration impact:
-- Framework checkpoint impact:
-- Does any claim imply event sourcing, cross-framework replay, or loop replaceability? What evidence supports it?
+<!-- Concise list of concrete code, documentation, and test changes. -->
 
 ## Verification
 
-<!-- Exact commands and results. Mark unrun checks explicitly. -->
+<!-- Exact commands and results. Mark irrelevant or unrun checks honestly. -->
 
-- [ ] Focused tests:
-- [ ] Full test suite:
-- [ ] Formatting/lint/type/architecture checks:
-- [ ] Package build and metadata checks:
-- [ ] Clean-wheel external consumer test:
-- [ ] Cancellation/resource-cleanup tests:
-- [ ] `git diff --check`:
+- Focused tests/checks:
+- Package/build/install proof, if applicable:
+- Adapter or host integration proof, if applicable:
+- `git diff --check`:
 
-## Evidence and limitations
+## Safety and durability
 
-<!-- Distinguish unit/API proof, clean-wheel proof, live-provider proof, and unverified claims. -->
+<!-- Complete only what is relevant to this change. -->
 
-## Risks and rollback
+- Tool authorization/audit/redaction impact:
+- Context trust, sensitivity, or provenance impact:
+- Conversation/memory/knowledge/checkpoint boundary impact:
+- External side-effect idempotency or reconciliation impact:
+- Secrets or public-repository exposure risk:
 
-- Compatibility/migration risk:
-- Security/data/lifecycle risk:
+## Risks and reviewer focus
+
+- Known limitations or capability gaps:
 - Rollback or disable path:
-
-## Independent reviewer focus
-
-<!-- Name 2–4 concrete areas for scrutiny. The author must not approve or merge their own PR. -->
+- Most important points for independent review:
