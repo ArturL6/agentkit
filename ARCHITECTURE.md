@@ -1,12 +1,10 @@
 # AgentKit architecture
 
-> **Legacy baseline:** This document predates the consolidated ADR set under
-> `docs/adr/` and the v1 product backlog under
-> `docs/architecture/agentkit-v1-product-backlog.md`. Those newer artifacts
-> govern where they conflict with this document. This file remains available
-> for provenance until the architecture is fully consolidated.
+> **ENTIRE DOCUMENT SUPERSEDED — NON-BINDING HISTORICAL RECORD.** Every section below, including all uses of “must”, “required”, “committed”, `RuntimeSpec`, explicit composition, one distribution, and kernel-owned `ToolInvoker`, describes the prior minimal-first baseline only. None of those statements is a current requirement unless independently preserved by the decision-by-decision map in `adr/README.md`.
+>
+> Current work is governed only by the authority order in `AGENTS.md`, the consolidated ADRs under `docs/adr/`, and `docs/architecture/agentkit-v1-product-backlog.md`. This file must not be used for task routing, acceptance decisions, or implementation requirements.
 
-**Status:** Superseded where inconsistent with the consolidated ADR set and v1 product backlog
+**Status:** Entire document superseded and retained solely for provenance
 
 **Language:** Python 3.12+
 
