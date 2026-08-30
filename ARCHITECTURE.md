@@ -1,6 +1,12 @@
 # AgentKit architecture
 
-**Status:** Owner-approved architecture baseline
+> **Legacy baseline:** This document predates the consolidated ADR set under
+> `docs/adr/` and the v1 product backlog under
+> `docs/architecture/agentkit-v1-product-backlog.md`. Those newer artifacts
+> govern where they conflict with this document. This file remains available
+> for provenance until the architecture is fully consolidated.
+
+**Status:** Superseded where inconsistent with the consolidated ADR set and v1 product backlog
 
 **Language:** Python 3.12+
 
