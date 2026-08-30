@@ -95,7 +95,7 @@ Reviewers check, in this order:
 1. authorized scope and acceptance criteria;
 2. correctness and meaningful tests;
 3. public API growth and dependency direction;
-4. ToolInvoker bypass risk;
+4. tool safety, authorization, audit, and bypass risk without requiring a universal tool gateway;
 5. framework/provider leakage;
 6. lifecycle ownership, failure unwind, and bounded shutdown;
 7. stream bounds, abandonment, cancellation, and terminal-outcome rules;
