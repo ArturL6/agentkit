@@ -9,4 +9,4 @@ Embeddable Python system for packaging domain agents independently from their ex
 - [Legacy architecture baseline](ARCHITECTURE.md)
 - [Legacy ADRs](adr/README.md)
 
-The consolidated ADRs and v1 product backlog govern where they conflict with the retained legacy baseline. ADR-001 remains proposed pending the comparative execution-framework spike; ADR-002 through ADR-009 are accepted.
+The consolidated ADRs and v1 product backlog are the current governing artifacts. `ARCHITECTURE.md`, `ROADMAP.md`, the ADRs under `adr/`, and `governance/kanban-backlog.json` are retained solely as non-binding historical provenance. ADR-001 remains proposed pending the comparative execution-framework spike; ADR-002 through ADR-009 are accepted.

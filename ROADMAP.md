@@ -1,10 +1,14 @@
 # AgentKit Roadmap
 
-## Binding direction
+## Superseded historical roadmap — non-binding and not dispatchable
 
-AgentKit will ship a **minimal, package-first vertical slice before plugin-host machinery**. The long-term target remains a full DeepSeek-Harness-inspired plugin system, introduced in evidence-gated stages rather than as the old 47-ticket starting plan.
+> **Do not route or implement work from this file.** The complete contents below, including the seven legacy AK identifiers, the one-wheel plan, `RuntimeSpec`, explicit composition, and `ToolInvoker` requirements, are retained only for provenance. They have no current planning or architectural authority.
+>
+> The sole current backlog is [`docs/architecture/agentkit-v1-product-backlog.md`](docs/architecture/agentkit-v1-product-backlog.md), containing AK-001 through AK-035. The current authority order is defined in [`AGENTS.md`](AGENTS.md).
 
-This is a planning artifact, not a dispatch. Suggested lanes are routing hints only. If a card is separately dispatched, work is limited to that card on a dedicated task branch. No card authorizes work from another card, backlog expansion, merges, direct commits or changes to `main`, or autonomous follow-on implementation.
+The historical plan proposed a **minimal, package-first vertical slice before plugin-host machinery**. It is superseded by the consolidated ADR set and v1 product backlog.
+
+The remainder of this file is a historical planning artifact, not a dispatch. Its lanes, cards, stages, requirements, modal verbs, and AK identifiers are non-binding and must not be consumed by task-routing automation.
 
 ## Minimal architecture baseline
 

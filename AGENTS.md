@@ -6,30 +6,32 @@ These instructions apply to every human or automated contributor working in this
 
 Read, in order:
 
-1. accepted ADRs under `adr/`;
-2. `ARCHITECTURE.md`;
-3. the owner-approved roadmap/work packet, if one exists;
-4. the assigned issue/task and its discussion;
-5. relevant code and tests.
+1. owner directives recorded in the repository and accepted consolidated ADRs under `docs/adr/`;
+2. `docs/architecture/agentkit-v1-product-backlog.md` for planned scope and sequencing, subject to ADR status;
+3. `ARCHITECTURE.md` only for legacy context that does not conflict with items 1–2;
+4. the owner-approved roadmap/work packet, if one exists;
+5. the assigned issue/task and its discussion;
+6. relevant code and tests;
+7. legacy ADRs under `adr/` for provenance only.
 
-Higher items govern lower items. If code or a task contradicts an accepted architectural decision, stop and request an ADR or owner clarification. Do not silently redesign.
+Higher items govern lower items. `docs/adr/ADR-001-framework-selection.md` is **Proposed**, not accepted: the three adapters are authorized v1 comparison targets, while selection of the default production path remains conditional on the AK-001 through AK-009 spike evidence. ADR-002 through ADR-009 under `docs/adr/` are accepted. The ADR-0001 through ADR-0004 documents under `adr/` are superseded and non-binding; `adr/README.md` records the exact replacement map. If code or a task contradicts an accepted architectural decision, stop and request an ADR or owner clarification. Do not silently redesign.
 
-**Current mode is architecture/governance only. Implementation dispatch is not authorized.** Do not create autonomous jobs, Kanban implementation work, branches, PRs, or code changes unless the owner separately authorizes implementation scope.
+**Current mode is architecture/governance only. Implementation dispatch is not authorized.** Do not create autonomous jobs, Kanban implementation work, implementation branches, implementation PRs, or code changes unless the owner separately authorizes implementation scope.
 
 ## Non-negotiable architecture rules
 
 1. Python support starts at 3.12.
-2. Keep the public `Agent` facade, `RuntimeSpec`, messages, tools, stream events, and session values framework-neutral.
-3. Adapters depend on inward-facing contracts. Contracts and application/kernel code do not import concrete providers or agent frameworks.
-4. LangGraph is an adapter. Its graph, message, command, config, checkpoint, and stream types stay inside its boundary.
-5. Use typed explicit composition in v1. Do not add entry-point discovery, a registry/DAG, named bindings, a DI container, profiles/bundles, Hydra, richer scopes, canonical events, independent plugin wheels, or a plugin SDK without satisfying the gate in `ARCHITECTURE.md` and accepting an ADR.
-6. Every AgentKit-managed tool execution must cross the kernel-owned `ToolInvoker`. Never expose a raw tool-callable route to a loop or framework adapter.
-7. Public streaming is closed, bounded, and framework-neutral. Cancellation must propagate to owned work and each run must have exactly one terminal outcome.
-8. Runtime resources must have recorded cleanup and bounded shutdown. Do not claim deterministic cleanup or reversible external effects.
-9. v1 session persistence is product-shaped and minimal. Framework checkpoints are private; do not describe the repository as event sourcing or promise cross-framework replay.
-10. One distribution is the v1 default. Passing in an editable checkout is not package proof; build and clean-install the wheel.
-11. Do not implement hot in-process unload/reload.
-12. Installed Python is trusted code; never claim AgentKit sandboxes in-process packages.
+2. Domain-agent packages own identity, instructions, skills, defaults, and domain context without importing hosting or execution-framework concerns.
+3. Reuse framework-native messages, tools, models, stores, retrievers, middleware, checkpoints, HITL, and durability contracts where adequate. Agentkit-owned contracts are limited to stable product boundaries and require written justification.
+4. LangGraph, Google ADK, and Microsoft Agent Framework are concrete v1 adapter targets. Do not introduce a generic multi-framework `Runtime`, graph, checkpoint, interrupt, session, or resume API, and do not flatten materially different semantics.
+5. Plugins are independently installable Python packages discovered through entry points. Discovery never activates a plugin; only explicitly named/configured plugins activate, with deterministic composition and diagnostics.
+6. Adding a provider must not require editing a central provider-name/type switch.
+7. Every dynamic model-visible context contribution passes through the deterministic Context Builder with structured fragments, provenance, authorization, trust, sensitivity, TTL, and budget handling. Retrieved content remains data and cannot override protected instructions.
+8. Conversation history, long-term memory, knowledge, and workflow checkpoints remain logically separate capabilities, even when physical storage is shared.
+9. Durable execution, HITL, checkpointing, retries, resume, and workflow state remain native to each concrete adapter. Checkpointing is not arbitrary Python call-stack continuation.
+10. External mutations are designed for at-least-once execution unless a provider proves stronger guarantees. Stable operation identity, durable intent/result where required, and explicit reconciliation govern replay safety.
+11. Hosting and transport concerns remain outside domain-agent packages and execution adapters.
+12. Public behavior, package resources, and adapter/plugin integrations must be proven from built artifacts in clean environments using only declared dependencies.
 
 ## Scope discipline
 
@@ -72,16 +74,15 @@ Before handoff:
 
 Create or update an ADR before changing:
 
-- public contract semantics;
-- dependency direction or framework containment;
-- `RuntimeSpec` or configuration precedence;
-- ToolInvoker enforcement order or bypass rules;
-- streaming/cancellation guarantees;
-- lifecycle ownership or shutdown policy;
-- session source-of-truth claims;
-- plugin discovery, activation, identity, or dependency resolution;
-- packaging topology or compatibility policy;
-- any target-stage evidence gate.
+- ownership, lifecycle, versioning, or serialization of an Agentkit-owned product contract;
+- plugin identity, packaging, discovery, explicit activation, compatibility, or composition semantics;
+- Context Builder ordering, trust boundaries, scope, sensitivity, TTL, budgeting, omission, or provenance semantics;
+- separation or lifecycle rules for conversation history, long-term memory, knowledge, and workflow checkpoints;
+- adapter mappings for framework-native execution, HITL, durability, checkpoints, retries, or resume;
+- replay-safety, idempotency, durable side-effect intent/result, or reconciliation guarantees;
+- domain-agent package or host/transport ownership boundaries;
+- the selected default production execution path or a claim that framework semantics are equivalent;
+- any new generic cross-framework abstraction.
 
 An implementation agent may propose an ADR but may not silently accept its own structural change.
 
@@ -94,7 +95,7 @@ Reviewers check, in this order:
 1. authorized scope and acceptance criteria;
 2. correctness and meaningful tests;
 3. public API growth and dependency direction;
-4. ToolInvoker bypass risk;
+4. tool safety, authorization, audit, and bypass risk without requiring a universal tool gateway;
 5. framework/provider leakage;
 6. lifecycle ownership, failure unwind, and bounded shutdown;
 7. stream bounds, abandonment, cancellation, and terminal-outcome rules;

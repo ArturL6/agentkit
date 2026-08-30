@@ -2,7 +2,7 @@
 
 ## Status
 
-Accepted
+Superseded by the consolidated v1 ADR set and product backlog. See `README.md` in this directory for the decision-by-decision replacement map.
 
 ## Context
 

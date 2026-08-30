@@ -2,10 +2,14 @@
   "schema_version": 1,
   "project": "agentkit",
   "planning_model": "GPT-5.6 Sol",
-  "status": "bounded_backlog_not_dispatched",
+  "status": "superseded_non_binding_do_not_dispatch",
+  "binding": false,
+  "dispatch_allowed": false,
+  "superseded_by": "docs/architecture/agentkit-v1-product-backlog.md",
+  "warning": "Historical seven-card backlog retained for provenance. IDs conflict with the authoritative 35-ticket backlog and MUST NOT be routed or dispatched.",
   "owner_decision": "Minimal vertical slice first; full DeepSeek-Harness-inspired plugin system remains a staged, evidence-gated target.",
   "authorization": "Planning only. Suggested lanes are routing metadata, not dispatch. No card authorizes work outside its own scope, merges, direct changes to main, or autonomous follow-on implementation.",
-  "cards": [
+  "legacy_cards": [
     {
       "id": "AK-001",
       "title": "Establish the public facade and explicit typed composition",
