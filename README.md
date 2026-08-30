@@ -6,6 +6,7 @@ Embeddable Python system for packaging domain agents independently from their ex
 
 - [Consolidated ADR set](docs/adr/README.md)
 - [Agentkit v1 product backlog](docs/architecture/agentkit-v1-product-backlog.md)
+- [MVP implementation operating model](governance/MVP-OPERATING-MODEL.md)
 - [Legacy architecture baseline](ARCHITECTURE.md)
 - [Legacy ADRs](adr/README.md)
 

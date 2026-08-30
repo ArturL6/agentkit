@@ -16,7 +16,7 @@ Read, in order:
 
 Higher items govern lower items. `docs/adr/ADR-001-framework-selection.md` is **Proposed**, not accepted: the three adapters are authorized v1 comparison targets, while selection of the default production path remains conditional on the AK-001 through AK-009 spike evidence. ADR-002 through ADR-009 under `docs/adr/` are accepted. The ADR-0001 through ADR-0004 documents under `adr/` are superseded and non-binding; `adr/README.md` records the exact replacement map. If code or a task contradicts an accepted architectural decision, stop and request an ADR or owner clarification. Do not silently redesign.
 
-**Current mode is architecture/governance only. Implementation dispatch is not authorized.** Do not create autonomous jobs, Kanban implementation work, implementation branches, implementation PRs, or code changes unless the owner separately authorizes implementation scope.
+**Current mode is MVP implementation.** The owner authorizes autonomous execution of ready Agentkit Kanban tickets in dependency order without per-ticket approval. Terra owns implementation, tests, package/build evidence, and PR creation. Sol owns design and architecture decisions, answers implementation-blocking open questions, and performs independent exact-head reviews. Start with the smallest working agent and only the modular foundations required to extend it; avoid speculative platform machinery. Implementation changes use task branches and PRs, never direct commits to `main`; merge only after an exact-head Sol `on_track` verdict.
 
 ## Non-negotiable architecture rules
 
@@ -35,7 +35,8 @@ Higher items govern lower items. `docs/adr/ADR-001-framework-selection.md` is **
 
 ## Scope discipline
 
-- Work on exactly one owner-authorized task at a time.
+- A ready, assigned Agentkit Kanban ticket is owner-authorized; each worker claims and executes one ticket at a time without asking again.
+- Terra escalates unresolved product, contract, or architecture questions to Sol and records the answer durably on the ticket or PR before continuing.
 - Inspect open work before starting to avoid duplication.
 - Keep a change small enough for one focused review.
 - Do not broaden a task to build deferred target-state machinery.
