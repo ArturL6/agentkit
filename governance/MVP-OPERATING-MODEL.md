@@ -12,13 +12,30 @@ Deliver the smallest installable Agentkit package that runs one useful agent end
 - **Sol — architecture and design:** own design tickets, answer Terra's blocking product/contract/architecture questions, document decisions on the ticket or PR, and independently review the exact final PR head.
 - **Hermes — orchestration:** keep Kanban dependencies and assignments accurate, route questions and reviews, verify remote state, and merge only an exact head with Sol `on_track`.
 
-## Initial vertical slice
+## MVP-0 moving-skeleton checkpoint
 
-1. **AK-001 / Sol:** define one small but non-trivial reference agent and executable acceptance matrix.
-2. **AK-002 / Terra:** scaffold the Python 3.12+ workspace, package boundaries, tests, lint/type/build gates, and clean-install smoke path.
-3. **AK-003 onward:** introduce only product contracts required by the reference path, then build the reusable spike runner and concrete adapters incrementally.
+Before implementing the three framework adapters, Agentkit must produce one acceptance-bounded local demonstration with all of the following on the same revision:
 
-The first demonstrable outcome is a minimal agent that can be installed, invoked, exercise at least one tool or capability boundary, and be tested from a clean environment. Multi-adapter durability, broad plugin catalogs, and production hardening follow through the existing dependency graph; they are not prerequisites for the first local demonstration unless an earlier ticket explicitly requires them.
+1. Build a normal wheel containing the minimal core and one example domain-agent package/resource set required by the demonstration.
+2. Install the wheel into a clean Python 3.12+ environment without editable or repository-relative imports.
+3. Construct an agent through a small typed Python API using an injected deterministic fake model and one injected tool/capability.
+4. Invoke the agent with one input, observe the tool/capability boundary, and receive the expected final output.
+5. Run the same path through deterministic automated tests and a documented smoke command.
+6. Keep model and tool implementations replaceable through narrow product-owned inputs without introducing a generic multi-framework runtime.
+
+MVP-0 explicitly does **not** require long-term memory, knowledge retrieval, guardrails, telemetry backends, persistent conversation, branching, retries, HITL, checkpoints, external side effects, entry-point plugin discovery, three adapters, or a service host. Those remain in the full reference scenario and later tickets.
+
+## Initial ticket interpretation
+
+1. **AK-001 / Sol:** define both the complete comparative reference scenario required by the ticket and a separately labeled MVP-0 fixture limited to the six criteria above. The broad capability matrix is design/test input, not permission to implement every capability immediately.
+2. **AK-002 / Terra:** create only the workspace, core/example package boundaries, and quality/build gates needed by MVP-0. Do not create empty adapter/plugin/host packages merely to resemble the eventual repository topology; add a package when the first consuming ticket needs it.
+3. **AK-003 / Terra with Sol answers:** introduce only the narrow Agentkit-owned contracts exercised by MVP-0. Every extra public abstraction needs a concrete MVP-0 consumer or must wait.
+4. **AK-004 / Terra:** make the reusable spike runner execute MVP-0 from a clean installation; this is the first working-agent checkpoint.
+5. **AK-005 onward:** add concrete adapter and broader scenario capabilities incrementally while preserving the working MVP-0 smoke path.
+
+AK-031 remains packaging of the full reference domain agent for v1 release. It does not prevent the earlier AK-004 moving-skeleton wheel and example from being installable test evidence.
+
+The first demonstrable outcome is therefore complete at AK-004: a minimal agent that can be built, clean-installed, invoked, exercise one tool/capability boundary, and return a tested result. Multi-adapter durability, broad plugin catalogs, and production hardening are not prerequisites for that checkpoint.
 
 ## Execution rules
 
